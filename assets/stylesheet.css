@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+body {
+  background: #fafafa;
+}
+
+.main.container {
+  padding-top: 2.5em;
+}
+
+@media screen and (min-width: 750px) {
+  .main.container {
+    padding-top: 5em;
+  }
+}
