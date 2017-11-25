@@ -3,7 +3,9 @@
 $(document).ready(function(){
   // Initialize Semantic-UI Components
   $('.ui.dropdown')
-    .dropdown()
+    .dropdown({
+      on: 'hover'
+    })
 
   // Form validation
   $('.ui.form')

@@ -1,7 +1,7 @@
 <div class="ui container">
   <!-- Logo -->
   <h2 class="ui top attached header">
-    <i class="add user icon"></i>Add User
+    <i class="add user icon"></i>Create New User
   </h2>
 
   <div class="ui attached segment">

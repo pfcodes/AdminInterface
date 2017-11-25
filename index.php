@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MembersFirst | Take Home Assignment</title>
   <link rel="stylesheet" href="semantic/dist/semantic.min.css">
   <link rel="stylesheet" href="assets/stylesheet.css">
 </head>
@@ -13,12 +14,12 @@
 <body>
   <div class="ui grid two column main container">
     <!-- Sidebar -->
-    <div class="ui four wide column">
+    <div class="ui three wide column">
       <?php $Router->loadSidebar() ?>
     </div>
 
     <!-- Page -->
-    <div class="twelve wide column">
+    <div class="thirteen wide column">
       <?php $Router->loadView(); ?>
     </div>
   </div>

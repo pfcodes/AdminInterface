@@ -3,27 +3,27 @@
 class Router {
 
   var $views = array(
-    'home' => 'views/home.php',
-    'add' => 'views/add.php',
-    'list' => 'views/list.php'
+    'intro' => 'includes/views/introduction.php',
+    'add' => 'includes/views/new_user.php',
+    'list' => 'includes/views/list_users.php'
   );
 
   public function loadHome() {
-    include_once($this->views['home']);
+    include_once($this->views['intro']);
   }
 
   public function loadSidebar() {
-    include_once('views/includes/sidebar.php');
+    include_once('includes/sidebar.php');
   }
   
   public function loadView() {
-    $page = isset($_GET['page']) ? $_GET['page'] : NULL;
+    $action = isset($_GET['action']) ? $_GET['action'] : NULL;
 
-    if (!isset($page)){
+    if (!isset($action)){
       return $this->loadHome();
     }
 
-    include_once($this->views[$page]);
+    include_once($this->views[$action]);
   }
 
 }
