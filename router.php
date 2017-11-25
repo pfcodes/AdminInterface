@@ -2,14 +2,14 @@
 
 class Router {
 
-  var $views = array(
-    'intro' => 'includes/views/introduction.php',
-    'add' => 'includes/views/new_user.php',
-    'list' => 'includes/views/list_users.php'
+  var $pages = array(
+    'intro' => 'includes/pages/introduction.php',
+    'add' => 'includes/pages/new_user.php',
+    'list' => 'includes/pages/list_users.php'
   );
 
   public function loadHome() {
-    include_once($this->views['intro']);
+    include_once($this->pages['intro']);
   }
 
   public function loadSidebar() {
@@ -23,7 +23,7 @@ class Router {
       return $this->loadHome();
     }
 
-    include_once($this->views[$action]);
+    include_once($this->pages[$action]);
   }
 
 }

@@ -1,14 +1,8 @@
 <?php 
-  global $db_host, $db_username, $db_password, $db_name; 
-  $db_connection = new mysqli($db_host, $db_username, $db_password, $db_name);
-
-  if ($db_connection->connect_error) {
-    die("Connection Failed " . $db_connection->connect_error);
-  }
-
+  require('db.php');
+  
   // Get List of Users
-  $sql = "SELECT id, FirstName, LastName, Email, group_id FROM `Users`";
-  $users = $db_connection->query($sql);
+  $users = $db_connection->query("SELECT id, FirstName, LastName, Email, group_id FROM `Users`");
 ?>
 
 <div class="ui container">
@@ -28,6 +22,7 @@
         </tr>
       </thead>
       <tbody>
+
         <?php if ($users->num_rows > 0): ?>
           <?php while ($row = $users->fetch_assoc()): ?>
             <tr>
@@ -36,13 +31,13 @@
               <td><?php echo $row["LastName"]; ?></td>
               <td><?php echo $row["Email"]; ?></td>
               <td><?php echo $row["group_id"]; ?></td>
-              <td><a href="#" class="ui circular icon red button">
+              <td><a class="ui circular icon red button api">
                 <i class="trash icon"></i>
-              </a></td>
+              </a></form></td>
             </tr>
           <?php endwhile; ?>
-        
         <?php endif; ?>
+
       </tbody>
     </table>
   </div>

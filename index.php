@@ -14,12 +14,12 @@
 <body>
   <div class="ui grid two column main container">
     <!-- Sidebar -->
-    <div class="ui three wide column">
+    <div class="ui four wide column">
       <?php $Router->loadSidebar() ?>
     </div>
 
     <!-- Page -->
-    <div class="thirteen wide column">
+    <div class="twelve wide column">
       <?php $Router->loadView(); ?>
     </div>
   </div>
