@@ -25,19 +25,21 @@ app = {
           'group': 'empty'
         }
       })
-
-    // API Buttons
-    $('.api.action').click(function() {
-      console.log($(this))
-    })
   },
 
   addUser: function () {
 
   },
 
-  deleteUser: function() {
-
+  deleteUser: function(user_id) {
+    console.log('Submitting XHR request to delete user with id: ' + user_id);
+    $.ajax({
+      url: '/api.php',
+      type: 'DELETE',
+      success: function(result) {
+        console.log(result);
+      }
+    })
   }
 }
 

@@ -13,7 +13,6 @@
     <table class="ui compact selectable table">
       <thead>
         <tr>
-          <th>ID</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>E-Mail Address</th>
@@ -25,13 +24,12 @@
 
         <?php if ($users->num_rows > 0): ?>
           <?php while ($row = $users->fetch_assoc()): ?>
-            <tr>
-              <td><?php echo $row["id"]; ?></td>
+            <tr data-user="<?php echo $row['id'] ?>">
               <td><?php echo $row["FirstName"]; ?></td>
               <td><?php echo $row["LastName"]; ?></td>
               <td><?php echo $row["Email"]; ?></td>
               <td><?php echo $row["group_id"]; ?></td>
-              <td><a class="ui circular icon red button api">
+              <td><a class="ui circular icon red button api delete" onclick="app.deleteUser(<?php echo $row['id']; ?>)">
                 <i class="trash icon"></i>
               </a></form></td>
             </tr>
