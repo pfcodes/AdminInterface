@@ -1,5 +1,5 @@
 <?php 
-  // TODO: MAKE THIS GLOBAL
+  // TODO: REFACTOR TO MAKE AN API CALL
   require('db.php');
   
   // Query the database

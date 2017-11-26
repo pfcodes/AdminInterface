@@ -1,9 +1,9 @@
 <?php 
-  // TODO: MAKE THIS GLOBAL
+  // TODO: REFACTOR TO MAKE AN API CALL
   require('db.php');
   
   // Query the database
-  $groups = $db_connection->query("SELECT GroupName, GroupColor FROM `Groups`");
+  $groups = $db_connection->query("SELECT id, GroupName, GroupColor FROM `Groups`");
 ?>
 
 <div class="ui container">
@@ -18,12 +18,12 @@
         <div class="two fields">
         <div class="field">
           <label>First Name</label>
-          <input type="text" name="fname" placeholder="First Name">
+          <input type="text" name="firstname" placeholder="First Name">
         </div>
 
         <div class="field">
           <label>Last Name</label>
-          <input type="text" name="lname" placeholder="Last Name">
+          <input type="text" name="lastname" placeholder="Last Name">
         </div>
       </div>
 
@@ -35,13 +35,13 @@
         <div class="field">
           <label>Group</label>
           <div class="ui selection dropdown">
-            <input type="hidden" name="group">
+            <input type="hidden" name="group_id">
             <i class="dropdown icon"></i>
             <div class="default text">Choose A Group</div>
             <div class="menu">
               <!-- TODO: Add Loop Here -->
               <?php while ($row = $groups->fetch_assoc()) : ?>
-                <div class="item"><?php echo $row['GroupName'] ?></div>
+                <div class="item" data-value="<?php echo $row['id'] ?>"><?php echo $row['GroupName'] ?></div>
               <?php endwhile; ?>
             </div>
           </div>

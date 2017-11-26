@@ -31,19 +31,25 @@ app = {
       })
 
     // Add user
-    $('#new-user-form.ui.form .submit.button')
+    $('#new-user-form.ui.form')
       .api({
         url: 'api.php',
         method: 'POST',
+        serializeForm: true,
         onComplete: function(response) {
           // TODO: Make more DRY
-          if (response == 'success') {
+          if (response.result == 'success') {
             $('.ui.modal .header').html('Success')
-            $('.ui.modal .content').html(response.message)
+            $('.ui.modal .content').html('Added the user to the database. <a href="index.php?action=list">View users</a>')
             $('.ui.modal').modal('show')
+            return
           } else if (response.result == 'fail') {
             $('.ui.modal .header').html('Error')
             $('.ui.modal .content').html('Message from server: ' + response.message)
+            $('.ui.modal').modal('show')
+          } else {
+            $('.ui.modal .header').html('Error')
+            $('.ui.modal .content').html('An unknown error occured')
             $('.ui.modal').modal('show')
           }
         }

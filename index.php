@@ -25,6 +25,7 @@
   </div>
 
   <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="node_modules/form-serializer/dist/jquery.serialize-object.min.js"></script>
   <script type="text/javascript" src="semantic/dist/semantic.min.js"></script>
   <script type="text/javascript" src="assets/global.js"></script>
 </body>
