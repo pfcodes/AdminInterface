@@ -15,8 +15,12 @@ app = {
         on: 'hover'
       })
 
-    // Form validation
-    $('.ui.form')
+    // Form
+    $('#new-user-form.ui.form').submit(function(e) {
+      return false
+    })
+
+    $('#new-user-form.ui.form')
       .form({
         fields: {
           'fname': 'empty',
@@ -25,22 +29,59 @@ app = {
           'group': 'empty'
         }
       })
-  },
 
-  addUser: function () {
+    // Add user
+    $('#new-user-form.ui.form .submit.button')
+      .api({
+        url: 'api.php',
+        method: 'POST',
+        onComplete: function(response) {
+          // TODO: Make more DRY
+          if (response == 'success') {
+            $('.ui.modal .header').html('Success')
+            $('.ui.modal .content').html(response.message)
+            $('.ui.modal').modal('show')
+          } else if (response.result == 'fail') {
+            $('.ui.modal .header').html('Error')
+            $('.ui.modal .content').html('Message from server: ' + response.message)
+            $('.ui.modal').modal('show')
+          }
+        }
+      })
 
-  },
+    // Delete User
+    $('.api.delete.button')
+      .api({
+        beforeSend: function(settings) {
+          var id = $(this).data().user;
 
-  deleteUser: function(user_id) {
-    console.log('Submitting XHR request to delete user with id: ' + user_id);
-    $.ajax({
-      url: '/api.php',
-      type: 'DELETE',
-      success: function(result) {
-        console.log(result);
+          console.log('Submitting XHR request to delete user with id: ' + id)
+
+          $(this).addClass('disabled')
+
+          // Change Semantic-UI API Prototype settings
+          settings.url = 'api.php?id=' + id
+          settings.method = 'DELETE'
+          return settings
+        },
+
+        onComplete: function(response) {
+          if (response.result == "success") {
+          return $(this).parent().closest('tr').transition('fade')
+        } else if (response.result == "fail") {
+          $(this).removeClass('disabled')
+          $('.ui.mini.modal .header').html('Error')
+          $('.ui.mini.modal .content').html('The server said: ' + response.message)
+          $('.ui.mini.modal').modal('show')
+        } else {
+          $(this).removeClass('disabled')
+          $('.ui.mini.modal .header').html('Error')
+          $('.ui.mini.modal .content').html('An unknown error occured')
+          $('.ui.mini.modal').modal('show')
+        }
       }
     })
-  }
+  },
 }
 
 $(document).ready(function(){

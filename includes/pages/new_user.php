@@ -1,3 +1,11 @@
+<?php 
+  // TODO: MAKE THIS GLOBAL
+  require('db.php');
+  
+  // Query the database
+  $groups = $db_connection->query("SELECT GroupName, GroupColor FROM `Groups`");
+?>
+
 <div class="ui container">
   <!-- Logo -->
   <h2 class="ui top attached header">
@@ -6,7 +14,7 @@
 
   <div class="ui attached segment">
 
-    <form class="ui form" method="post" action="api.php">
+    <form id="new-user-form" class="ui form" method="post" action="api.php">
         <div class="two fields">
         <div class="field">
           <label>First Name</label>
@@ -32,10 +40,9 @@
             <div class="default text">Choose A Group</div>
             <div class="menu">
               <!-- TODO: Add Loop Here -->
-              <div class="item" data-value="a">Group A</div>
-              <div class="item" data-value="b">Group B</div>
-              <div class="item" data-value="c">Group C</div>
-              <div class="item" data-value="d">Group D</div>
+              <?php while ($row = $groups->fetch_assoc()) : ?>
+                <div class="item"><?php echo $row['GroupName'] ?></div>
+              <?php endwhile; ?>
             </div>
           </div>
         </div>
@@ -46,5 +53,14 @@
           </div>
       </div>
     </form>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="ui mini modal">
+  <div class="header"></div>
+  <div class="content"></div>
+  <div class="actions">
+    <div class="ui approve button">Ok</div>
   </div>
 </div>
