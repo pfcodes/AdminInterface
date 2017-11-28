@@ -41,7 +41,7 @@
             <div class="menu">
               <!-- TODO: Add Loop Here -->
               <?php while ($row = $groups->fetch_assoc()) : ?>
-                <div class="item" data-value="<?php echo $row['id'] ?>"><?php echo $row['GroupName'] ?></div>
+                <div class="item" data-value="<?php echo $row['id'] ?>"><i class="square icon <?php echo $row['GroupColor'] ?>"></i><?php echo $row['GroupName'] ?></div>
               <?php endwhile; ?>
             </div>
           </div>

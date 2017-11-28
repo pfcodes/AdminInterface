@@ -4,7 +4,6 @@ var app = app || {} ;
 
 app = {
   init: function() {
-    console.log('Made from scratch by Phil Fevry for Member First :)')
     this.bindActions();
   },
 

@@ -66,7 +66,7 @@
         $result = "success";
       } else {
         $result = "fail";
-        $message ="You can't delete the only user in the group."; 
+        $message ="You can't delete the only user in a group."; 
       }
 
       $response = array(

@@ -8,6 +8,6 @@
   $db_host = "localhost";
   $db_username = "root";
   $db_password = "";
-  $db_name = "members_first_assignment";
+  $db_name = "lamp_excercise";
   
 ?>
